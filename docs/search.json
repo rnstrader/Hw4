@@ -15,7 +15,7 @@
     "href": "pages/concepts.html",
     "title": "Conceptual Questions",
     "section": "",
-    "text": "Answers go here!",
+    "text": "Conceptual Questions\n\nIf your working directory is myfolder/homework/, what relative path would you specify to get the file located at myfolder/MyData.csv?\n\n\nThe relative path I would specify to get MyData.csv is read.csv(“myfolder/MyData.csv”)\n\n\nWhat are the major benefits of using R projects?\n\n\nThe major benefits of using R projects is that they provide an intuitive way to separate work into different organized groups. Within each group is its own working directory, folder structure, etc. It also simplifies the sharing of R code to others for contributions.\n\n\nWhat is git and what is github?\n\n\nGit is a system of version control that tracks changes to programs/code. Github is a website that hosts Git repositories\n\n\nWhat are the two main differences between a tibble and a data.frame?\n\n\nThe tibble is a reimagining of the data frame. The two main differences is that a tibble does less and is more temperamental, meaning that working with them tends to encourage more expressive code.\n\n\nRewrite the following nested function call using BaseR’s chaining operator: arrange(filter(select(as_tibble(iris), starts_with(“Petal”), Species), Petal.Length &lt; 1.55), Species)\n\n\nas_tibble(iris) |&gt; select(starts_with(“Petal”), Species) |&gt; filter(Petal.Length &lt; 1.55) |&gt; arrange(Species)\n\n\nas a chunk:\n\n\n#as_tibble(iris) |&gt;\n #select(starts_with(\"Petal\"), Species) |&gt;\n  #filter(Petal.Length &lt; 1.55) |&gt;\n  #arrange(Species)",
     "crumbs": [
       "Home",
       "Conceptual Questions"

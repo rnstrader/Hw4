@@ -6,7 +6,6 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Answers go here!
 
 -   If your working directory is myfolder/homework/, what relative path would you specify to get the file located at myfolder/MyData.csv?
 
@@ -22,21 +21,17 @@ Answers go here!
 
 -   What are the two main differences between a tibble and a data.frame?
 
-> The tibble is a reimagining of the data frame. The two main differences is that a tibble does less and is more temperamental, meaning that working with them tends to encourage more expressive code. 
+> The tibble is a reimagining of the data frame. The two main differences is that a tibble does less and is more temperamental, meaning that working with them tends to encourage more expressive code.
 
--   Rewrite the following nested function call using BaseR’s chaining operator:
-arrange(filter(select(as_tibble(iris), starts_with("Petal"), Species), Petal.Length < 1.55), Species)
+-   Rewrite the following nested function call using BaseR’s chaining operator: arrange(filter(select(as_tibble(iris), starts_with("Petal"), Species), Petal.Length \< 1.55), Species)
 
-> as_tibble(iris) |>
-  select(starts_with("Petal"), Species) |>
-  filter(Petal.Length < 1.55) |>
-  arrange(Species)
-  
+> as_tibble(iris) \|\> select(starts_with("Petal"), Species) \|\> filter(Petal.Length \< 1.55) \|\> arrange(Species)
+
 > as a chunk:
 
 ```{r}
-as_tibble(iris) |>
-  select(starts_with("Petal"), Species) |>
-  filter(Petal.Length < 1.55) |>
-  arrange(Species)
+#as_tibble(iris) |>
+ #select(starts_with("Petal"), Species) |>
+  #filter(Petal.Length < 1.55) |>
+  #arrange(Species)
 ```

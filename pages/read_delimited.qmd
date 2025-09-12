@@ -6,5 +6,39 @@ editor_options:
   chunk_output_type: inline
 ---
 
+## Glass Data
 
-Answers go here!
+1.  
+installing (commented out so it doesn't rerun each time) and loading the tidyverse package to read in the dataset, then naming each column within the read_csv function.
+```{r}
+#install.packages("tidyverse")
+library(tidyverse)
+Glass <- read_csv("https://www4.stat.ncsu.edu/~online/datasets/glass.data", col_names = c("Id", "RI", "Na", "Mg", "Al", "Si", "K", "Ca", "Ba", "Fe", "Type_of_glass"))
+```
+
+2. 
+using the mutate and factor function to create a chain that renames the numeric values of Type_of_glass to descriptive character strings.
+```{r}
+Glass |> 
+  mutate(Type_of_glass = Type_of_glass |> 
+           factor(levels = 1:7, labels = c("building_windows_float_processed", "building_windows_non_float_processed", "vehicle_windows_float_processed", "vehicle_windows_non_float_processed", "containers", "tableware", "headlamps")))
+```
+
+3. 
+Continuing the chain and using the filter function to keep Fe variables whose value is less than 0.2 as well as tableware and headlamp values for Type_of_glass.
+```{r}
+Glass <- Glass |> 
+  mutate(Type_of_glass = Type_of_glass |>
+           factor(levels = 1:7, labels = c("building_windows_float_processed", "building_windows_non_float_processed", "vehicle_windows_float_processed", "vehicle_windows_non_float_processed", "containers", "tableware", "headlamps"))) |> 
+  filter(Fe < 0.2) |>
+  filter(Type_of_glass == c("headlamps", "tableware"))
+Glass
+```
+
+## Yeast Data
+
+1. 
+
+```{r}
+
+```
