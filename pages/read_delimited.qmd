@@ -38,7 +38,24 @@ Glass
 ## Yeast Data
 
 1. 
-
+Reading Yeast data into R and naming the columns
 ```{r}
+Yeast <- read_table("https://www4.stat.ncsu.edu/~online/datasets/yeast.data", col_names = c("seq_name", "mcg", "gvh", "alm", "mit", "erl", "pox", "vac", "nuc", "class"))
+Yeast
+```
 
+2. 
+beginning of the chain which removes columns seq_name and nuc.
+```{r}
+Yeast |>
+  select(-seq_name, -nuc)
+```
+
+3. 
+Continuing the chain to include columns corresponding to the mean and median of each variable at each class grouping using the mutate and across function.
+```{r}
+Yeast |>
+  select(-seq_name, -nuc) |>
+  group_by(class) |>
+  mutate(across(where(is.numeric), list(mean = mean, median = median), names = "{.col}_{.fn}"))
 ```
