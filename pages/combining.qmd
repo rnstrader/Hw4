@@ -79,4 +79,5 @@ wine <- wine |>
   select(c(pH, alcohol, type, quality)) |>
   group_by(quality) |>
   mutate(alcohol_mean = mean(alcohol), alcohol_sd = sd(alcohol))
+wine
 ```

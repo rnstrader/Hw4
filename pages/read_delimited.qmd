@@ -54,8 +54,9 @@ Yeast |>
 3. 
 Continuing the chain to include columns corresponding to the mean and median of each variable at each class grouping using the mutate and across function.
 ```{r}
-Yeast |>
+Yeast <- Yeast |>
   select(-seq_name, -nuc) |>
   group_by(class) |>
   mutate(across(where(is.numeric), list(mean = mean, median = median), names = "{.col}_{.fn}"))
+Yeast
 ```
