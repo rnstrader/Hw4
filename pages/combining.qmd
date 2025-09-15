@@ -10,29 +10,73 @@ editor_options:
 accessing and importing the white wine dataset from directory using read_excel function.
 ```{r}
 library(readxl)
-wine <- read_excel("white-wine.xlsx", sheet = 1)
-wine
+wwine <- read_excel("white-wine.xlsx", sheet = 1)
+wwine
 ```
 
 2. 
 Using the second sheet of white-wine.xlsx to rename the columns of wine object using the colnames function.
 ```{r}
 names <- read_excel("white-wine.xlsx", sheet = 2)
-colnames(wine) <- names$Variables
-colnames(wine)
+colnames(wwine) <- names$Variables
+colnames(wwine)
 ```
 
 3. 
 Adding a column to the dataset indicating color of wine using mutate.
 ```{r}
 library(tidyverse)
-wine |> mutate(type = "white")
+wwine <- wwine |> mutate(type = "white")
+wwine
 ```
 
 4.
-
+importing a new dataset that looks at red wine, coerces columns to be the same data type as the white wine dataset, and applying the same changes as the white wine dataset, with type being red instead of white.
 ```{r}
 rwine <- read_csv2("https://www4.stat.ncsu.edu/~online/datasets/red-wine.csv")
+rwine <- rwine |> mutate(across(c(2:3, 5, 8, 10), as.double))
 colnames(rwine) <- names$Variables
-rwine |> mutate(type = "red")
+rwine <- rwine |> mutate(type = "red")
+rwine
+```
+
+5. 
+Combining the two data frames into one using the bind_rows function
+```{r}
+wine <- bind_rows(wwine, rwine)
+wine
+```
+
+6. 
+Chain that sorts wine to include high quality wine with reasonable alcohol value.
+```{r}
+wine |> filter(quality > 6.5 , alcohol < 132)
+```
+
+7. 
+continuing chain to order dataset from highest quality to lowest
+```{r}
+wine |> 
+  filter(quality > 6.5 , alcohol < 132) |>
+  arrange(desc(quality))
+```
+
+8. 
+continuing chain to only select variables that contain acid, alcohol, type, and quality.
+```{r}
+wine |> 
+  filter(quality > 6.5 , alcohol < 132) |>
+  arrange(desc(quality)) |> 
+  select(c(pH, alcohol, type, quality))
+```
+
+9. 
+adding the mean and sd of the alcohol variable to the dataset, grouped by wine quality.
+```{r}
+wine |> 
+  filter(quality > 6.5 , alcohol < 132) |>
+  arrange(desc(quality)) |> 
+  select(c(pH, alcohol, type, quality)) |>
+  group_by(quality) |>
+  mutate(alcohol_mean = mean(alcohol), alcohol_sd = sd(alcohol))
 ```
