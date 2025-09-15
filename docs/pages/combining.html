@@ -467,7 +467,25 @@ num (5): fixed acidity, residual sugar, free sulfur dioxide, pH, alcohol
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(quality)) <span class="sc">|&gt;</span> </span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(pH, alcohol, type, quality)) <span class="sc">|&gt;</span></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(quality) <span class="sc">|&gt;</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alcohol_mean =</span> <span class="fu">mean</span>(alcohol), <span class="at">alcohol_sd =</span> <span class="fu">sd</span>(alcohol))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alcohol_mean =</span> <span class="fu">mean</span>(alcohol), <span class="at">alcohol_sd =</span> <span class="fu">sd</span>(alcohol))</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>wine</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,198 × 6
+# Groups:   quality [3]
+      pH alcohol type  quality alcohol_mean alcohol_sd
+   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;
+ 1    32     104 white       9         122.       10.1
+ 2   341     124 white       9         122.       10.1
+ 3   328     125 white       9         122.       10.1
+ 4   328     127 white       9         122.       10.1
+ 5   337     129 white       9         122.       10.1
+ 6   333     128 white       8         102.       36.8
+ 7   333     128 white       8         102.       36.8
+ 8   347     105 white       8         102.       36.8
+ 9   333     107 white       8         102.       36.8
+10   333     107 white       8         102.       36.8
+# ℹ 1,188 more rows</code></pre>
+</div>
 </div>
 
 
