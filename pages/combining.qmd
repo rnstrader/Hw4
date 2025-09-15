@@ -73,7 +73,7 @@ wine |>
 9. 
 adding the mean and sd of the alcohol variable to the dataset, grouped by wine quality.
 ```{r}
-wine |> 
+wine <- wine |> 
   filter(quality > 6.5 , alcohol < 132) |>
   arrange(desc(quality)) |> 
   select(c(pH, alcohol, type, quality)) |>
