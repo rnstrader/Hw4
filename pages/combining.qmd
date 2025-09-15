@@ -6,4 +6,33 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Answers go here!
+1. 
+accessing and importing the white wine dataset from directory using read_excel function.
+```{r}
+library(readxl)
+wine <- read_excel("white-wine.xlsx", sheet = 1)
+wine
+```
+
+2. 
+Using the second sheet of white-wine.xlsx to rename the columns of wine object using the colnames function.
+```{r}
+names <- read_excel("white-wine.xlsx", sheet = 2)
+colnames(wine) <- names$Variables
+colnames(wine)
+```
+
+3. 
+Adding a column to the dataset indicating color of wine using mutate.
+```{r}
+library(tidyverse)
+wine |> mutate(type = "white")
+```
+
+4.
+
+```{r}
+rwine <- read_csv2("https://www4.stat.ncsu.edu/~online/datasets/red-wine.csv")
+colnames(rwine) <- names$Variables
+rwine |> mutate(type = "red")
+```
